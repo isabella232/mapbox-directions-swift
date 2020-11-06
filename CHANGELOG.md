@@ -8,6 +8,7 @@
 * Upgraded to Polyline v5.0.0. ([#487](https://github.com/mapbox/mapbox-directions-swift/pull/487))
 * Added `Intersection.regionCode` and `RouteStep.administrativeRegionIndicesByIntersection` for more convenient region data usage. `Intersection.administrativeRegionIndex` is now internal. ([#485](https://github.com/mapbox/mapbox-directions-swift/pull/485))
 * Added `Intersection.regionCode` and `RouteStep.administrativeRegionIndicesByIntersection` for more convenient region data usage. `Intersection.administrativeRegionIndex` is removed in favor of the above, depending on needs in a string representation or index value. ([#485](https://github.com/mapbox/mapbox-directions-swift/pull/485))
+* Removed `Intersection.geometryIndex` and `RouteLeg.intersectionsIndexesByStep` in favor of `RouteStep.segmentIndicesByIntersection` as a correct representation of such data.  ([#490](https://github.com/mapbox/mapbox-directions-swift/pull/490))
 
 ## v1.0.0
 
