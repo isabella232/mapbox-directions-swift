@@ -24,6 +24,7 @@ public struct Intersection {
                 restStop: RestStop? = nil,
                 isUrban: Bool? = nil,
                 regionCode: String? = nil) {
+                mapbox_streets_v8: [String: String]? = nil) {
         self.location = location
         self.headings = headings
         self.approachIndex = approachIndex
@@ -37,6 +38,7 @@ public struct Intersection {
         self.isUrban = isUrban
         self.restStop = restStop
         self.regionCode = regionCode
+        self.mapbox_streets_v8 = mapbox_streets_v8
     }
     
     // MARK: Getting the Location of the Intersection
@@ -145,6 +147,8 @@ public struct Intersection {
      If no lane information is available for an intersection, this property’s value is `nil`.
      */
     public let usableApproachLanes: IndexSet?
+    
+    public let mapbox_streets_v8: [String: String]?
 }
 
 extension Intersection: Codable {
@@ -162,6 +166,7 @@ extension Intersection: Codable {
         case restStop = "rest_stop"
         case administrativeRegionIndex = "admin_index"
         case geometryIndex = "geometry_index"
+        case mapbox_streets_v8 = "mapbox_streets_v8"
     }
     
 
@@ -251,6 +256,8 @@ extension Intersection: Codable {
         if let geoIndex = geometryIndex {
             try container.encode(geoIndex, forKey: .geometryIndex)
         }
+        
+        try container.encodeIfPresent(mapbox_streets_v8, forKey: .mapbox_streets_v8)
     }
     
     public init(from decoder: Decoder) throws {
@@ -280,6 +287,8 @@ extension Intersection: Codable {
         isUrban = try container.decodeIfPresent(Bool.self, forKey: .isUrban)
 
         restStop = try container.decodeIfPresent(RestStop.self, forKey: .restStop)
+        
+        mapbox_streets_v8 = try container.decodeIfPresent([String: String].self, forKey: .mapbox_streets_v8)
     }
 }
 
