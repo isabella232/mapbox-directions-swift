@@ -23,7 +23,7 @@ public struct Intersection {
                 tunnelName: String? = nil,
                 restStop: RestStop? = nil,
                 isUrban: Bool? = nil,
-                regionCode: String? = nil) {
+                regionCode: String? = nil,
                 mapbox_streets_v8: [String: String]? = nil) {
         self.location = location
         self.headings = headings
